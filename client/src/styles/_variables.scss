@@ -1,0 +1,34 @@
+// _variables.scss
+// ─────────────────────────────────────────────────────────────────────────────
+// All design tokens in one place.
+// Change a value here and it updates everywhere on the site.
+// ─────────────────────────────────────────────────────────────────────────────
+
+// ── Colours ──────────────────────────────────────────────────────────────────
+$bg:      #0c0c0b;                          // page background (darkest)
+$bg2:     #111110;                          // slightly lighter bg (marquee, meta panels)
+$bg3:     #161614;                          // section/card background
+$fg:      #ede9e3;                          // primary text (off-white warm)
+$fg2:     rgba(237, 233, 227, 0.55);        // secondary text
+$fg3:     rgba(237, 233, 227, 0.2);         // muted/dim text
+$lime:    #c8f53b;                          // accent colour (yellow-green)
+$lime2:   rgba(200, 245, 59, 0.12);         // accent at low opacity
+
+// ── Borders ──────────────────────────────────────────────────────────────────
+$border:  rgba(237, 233, 227, 0.08);        // very subtle dividers
+$border2: rgba(237, 233, 227, 0.15);        // slightly more visible borders
+
+// ── Easing curves ────────────────────────────────────────────────────────────
+$ease:     cubic-bezier(0.76, 0, 0.24, 1);  // standard ease-in-out
+$ease-out: cubic-bezier(0.16, 1, 0.3,  1);  // overshooting ease-out (for reveals)
+
+// ── Typography ───────────────────────────────────────────────────────────────
+$font-heading: 'Syne',  sans-serif;   // used for all big headings
+$font-body:    'Inter', sans-serif;   // used for body copy
+
+// ── Breakpoints ──────────────────────────────────────────────────────────────
+// Usage: @media (max-width: $bp-tablet) { ... }
+$bp-large:  1100px;   // large tablets / small laptops
+$bp-tablet:  900px;   // tablets
+$bp-mobile:  680px;   // mobile landscape / large phones
+$bp-small:   400px;   // small phones

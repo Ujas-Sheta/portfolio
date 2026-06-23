@@ -1,0 +1,37 @@
+// Footer.scss
+
+@use '../../styles/variables' as *;
+
+footer {
+  background:      $bg;
+  padding:         1.25rem 2.5rem;
+  display:         flex;
+  justify-content: space-between;
+  align-items:     center;
+  border-top:      1px solid $border;
+}
+
+.ft-l {
+  font-size:      0.68rem;
+  color:          $fg3;
+  letter-spacing: 0.04em;
+}
+
+.ft-r {
+  font-family:    $font-heading;
+  font-size:      0.72rem;
+  font-weight:    700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color:          $lime;
+}
+
+// ── Responsive ───────────────────────────────────────────────────────────────
+@media (max-width: $bp-mobile) {
+  footer {
+    padding:        1rem;
+    flex-direction: column;
+    gap:            0.5rem;
+    text-align:     center;
+  }
+}

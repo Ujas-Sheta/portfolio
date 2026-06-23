@@ -1,0 +1,41 @@
+// Marquee.scss
+
+@use '../../styles/variables' as *;
+
+.marquee {
+  padding:     1rem 0;
+  border-top:  1px solid $border;
+  border-bottom: 1px solid $border;
+  overflow:    hidden;
+  white-space: nowrap;
+  background:  $bg2;
+}
+
+// ── Track scrolls infinitely left ────────────────────────────────────────────
+.mtrack {
+  display:   inline-flex;
+  animation: marquee-scroll 22s linear infinite;
+
+  // Pause on hover
+  &:hover { animation-play-state: paused; }
+}
+
+// ── Single item ───────────────────────────────────────────────────────────────
+.mitem {
+  display:         inline-flex;
+  align-items:     center;
+  gap:             1.5rem;
+  padding:         0 2rem;
+  font-family:     $font-heading;
+  font-size:       0.78rem;
+  font-weight:     700;
+  letter-spacing:  0.12em;
+  text-transform:  uppercase;
+  color:           $fg3;
+}
+
+// Lime star separator between items
+.msep {
+  color:     $lime;
+  font-size: 0.6rem;
+}

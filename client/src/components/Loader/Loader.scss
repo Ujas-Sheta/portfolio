@@ -1,0 +1,58 @@
+// Loader.scss
+
+@use '../../styles/variables' as *;
+
+// ── Overlay ───────────────────────────────────────────────────────────────────
+#loader {
+  position:        fixed;
+  inset:           0;
+  z-index:         9000;
+  background:      $bg;
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  overflow:        hidden;
+
+  // Exit animation — clip the loader off the screen upward
+  &.out {
+    clip-path:  inset(0 0 100% 0);
+    transition: clip-path 1s $ease 0.2s;
+  }
+}
+
+// ── Inner wrapper ─────────────────────────────────────────────────────────────
+.loader-inner {
+  text-align: center;
+}
+
+// ── Each line clips overflow so words slide up from below ─────────────────────
+.loader-line {
+  overflow:     hidden;
+  margin-bottom: 0.3rem;
+}
+
+// ── Word (starts translated down, animates to 0) ──────────────────────────────
+.lw {
+  display:         block;
+  font-family:     $font-heading;
+  font-size:       clamp(3rem, 10vw, 7rem);
+  font-weight:     800;
+  letter-spacing: -0.04em;
+  line-height:     1;
+  color:           $fg;
+  transform:       translateY(115%);
+  transition:      transform 1.1s $ease-out;
+
+  &.show {
+    transform: translateY(0);
+  }
+}
+
+// ── Progress bar ──────────────────────────────────────────────────────────────
+.loader-progress {
+  width:      0%;
+  height:     2px;
+  background: $lime;
+  margin-top: 2.5rem;
+  transition: width 1.6s $ease;
+}

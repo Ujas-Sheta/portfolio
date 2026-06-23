@@ -1,0 +1,154 @@
+// Projects.scss
+
+@use '../../styles/variables' as *;
+
+.projects {
+  padding:    6rem 2.5rem;
+  border-top: 1px solid $border;
+}
+
+// ── Project grid ──────────────────────────────────────────────────────────────
+.proj-grid {
+  display:               grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:                   1px;
+  background:            $border; // gap colour via background trick
+  margin-top:            4rem;
+  border:                1px solid $border;
+}
+
+// ── Single project card (is an <a> tag) ───────────────────────────────────────
+.proj-card {
+  background:     $bg;
+  position:       relative;
+  overflow:       hidden;
+  cursor:         none;
+  text-decoration: none;
+  color:           $fg;
+  display:         block;
+  transition:      background 0.4s;
+
+  &:hover {
+    background: $bg3;
+
+    .proj-name  { color: $lime; }
+    .proj-arrow {
+      background:   $lime;
+      border-color: $lime;
+      color:        #000;
+      transform:    rotate(-45deg);
+    }
+  }
+}
+
+.proj-card-inner {
+  padding: 2rem;
+}
+
+.proj-num {
+  font-size:      0.62rem;
+  letter-spacing: 0.16em;
+  color:          $lime;
+  font-weight:    700;
+  margin-bottom:  2rem;
+}
+
+.proj-name {
+  font-family:     $font-heading;
+  font-size:       1.4rem;
+  font-weight:     800;
+  letter-spacing: -0.02em;
+  line-height:     1.1;
+  margin-bottom:   1rem;
+  color:           $fg;
+  transition:      color 0.3s;
+}
+
+.proj-desc {
+  font-size:     0.78rem;
+  color:         $fg3;
+  line-height:   1.7;
+  margin-bottom: 1.5rem;
+  font-weight:   300;
+}
+
+// ── Tag row ───────────────────────────────────────────────────────────────────
+.proj-tags-row {
+  display:       flex;
+  gap:           0.3rem;
+  flex-wrap:     wrap;
+  margin-bottom: 2rem;
+}
+
+.ptag {
+  font-size:      0.6rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding:        0.15rem 0.5rem;
+  border:         1px solid $border2;
+  color:          $fg3;
+  border-radius:  2px;
+}
+
+// ── Arrow circle ─────────────────────────────────────────────────────────────
+.proj-arrow {
+  width:        36px;
+  height:       36px;
+  border-radius: 50%;
+  border:       1px solid $border2;
+  display:      flex;
+  align-items:  center;
+  justify-content: center;
+  font-size:    0.9rem;
+  color:        $fg3;
+  transition:   background 0.3s, border-color 0.3s, color 0.3s, transform 0.3s;
+}
+
+// ── Thumbnail ─────────────────────────────────────────────────────────────────
+.proj-thumb {
+  width:           100%;
+  aspect-ratio:    16 / 9;
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  font-size:       3.5rem;
+  position:        relative;
+  overflow:        hidden;
+
+  span {
+    position: relative;
+    z-index:  1;
+    opacity:  0.5;
+  }
+}
+
+// Gradient backgrounds — edit these or add .proj-thumb-4, etc.
+.proj-thumb-1 { background: linear-gradient(135deg, #0f1f3a, #1a3a6b); }
+.proj-thumb-2 { background: linear-gradient(135deg, #1a0f0f, #5c1a1a); }
+.proj-thumb-3 { background: linear-gradient(135deg, #0f1a0f, #1a4a1a); }
+
+.thumb-label {
+  position:       absolute;
+  bottom:         1rem;
+  left:           1rem;
+  font-size:      0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color:          rgba(255, 255, 255, 0.35);
+}
+
+// ── Responsive ───────────────────────────────────────────────────────────────
+@media (max-width: $bp-tablet) {
+  .projects   { padding: 4rem 1.25rem; }
+  .proj-grid  { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: $bp-mobile) {
+  .projects          { padding: 3rem 1rem; }
+  .proj-grid         { grid-template-columns: 1fr; }
+  .proj-card-inner   { padding: 1.5rem 1rem; }
+}
+
+@media (max-width: $bp-small) {
+  .projects { padding: 2.5rem 0.85rem; }
+}

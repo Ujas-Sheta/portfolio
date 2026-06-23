@@ -1,0 +1,12 @@
+// main.scss — Global stylesheet entry point
+// ─────────────────────────────────────────────────────────────────────────────
+// Imported by src/main.jsx. Brings in variables, reset, and animations
+// so they are available site-wide.
+//
+// Component-specific styles live next to each component (e.g. Nav/Nav.scss)
+// and are imported directly in those component files.
+// ─────────────────────────────────────────────────────────────────────────────
+
+@use 'variables';    // design tokens  (no output, just $vars)
+@use 'reset';        // browser normalisation
+@use 'animations';   // keyframes + .rv / .cr reveal classes

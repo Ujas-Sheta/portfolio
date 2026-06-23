@@ -1,0 +1,96 @@
+// Skills.scss
+
+@use '../../styles/variables' as *;
+
+.skills {
+  border-top: 1px solid $border;
+}
+
+.skills-top {
+  padding: 6rem 2.5rem 3rem;
+}
+
+// ── Skills grid ───────────────────────────────────────────────────────────────
+.skills-grid {
+  display:               grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top:            1px solid $border;
+}
+
+// ── Single skill cell ─────────────────────────────────────────────────────────
+.sk {
+  padding:    2.5rem 2rem;
+  border-right:  1px solid $border;
+  border-bottom: 1px solid $border;
+  position:   relative;
+  overflow:   hidden;
+  transition: background 0.35s;
+
+  // Remove right border on every 3rd item (last in row)
+  &:nth-child(3n) { border-right: none; }
+
+  // Lime top-border wipe on hover
+  &::after {
+    content:          '';
+    position:         absolute;
+    top:              0;
+    left:             0;
+    width:            100%;
+    height:           3px;
+    background:       $lime;
+    transform:        scaleX(0);
+    transform-origin: left;
+    transition:       transform 0.5s $ease-out;
+  }
+
+  &:hover {
+    background: $bg2;
+
+    &::after { transform: scaleX(1); }
+  }
+}
+
+.sk-n {
+  font-size:      0.62rem;
+  letter-spacing: 0.16em;
+  color:          $lime;
+  font-weight:    700;
+  margin-bottom:  1.25rem;
+}
+
+.sk-name {
+  font-family:   $font-heading;
+  font-size:     1.05rem;
+  font-weight:   700;
+  color:         $fg;
+  margin-bottom: 0.5rem;
+}
+
+.sk-desc {
+  font-size:   0.78rem;
+  color:       $fg3;
+  line-height: 1.7;
+}
+
+// ── Responsive ───────────────────────────────────────────────────────────────
+@media (max-width: $bp-tablet) {
+  .skills-top { padding: 4rem 1.25rem 3rem; }
+
+  .skills-grid { grid-template-columns: 1fr 1fr; }
+
+  // Reset 3n rule, apply 2n for 2-column layout
+  .sk:nth-child(3n)  { border-right: 1px solid $border; }
+  .sk:nth-child(2n)  { border-right: none; }
+}
+
+@media (max-width: $bp-mobile) {
+  .skills-top { padding: 3rem 1rem 2.5rem; }
+}
+
+@media (max-width: $bp-small) {
+  .skills-top  { padding: 2.5rem 0.85rem 2rem; }
+  .skills-grid { grid-template-columns: 1fr; }
+
+  // Remove all right borders in single-column view
+  .sk:nth-child(n) { border-right: none; }
+}

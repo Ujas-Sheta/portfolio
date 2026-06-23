@@ -1,0 +1,301 @@
+// Experience.scss
+
+@use '../../styles/variables' as *;
+
+// ── Section wrapper ───────────────────────────────────────────────────────────
+.experience {
+  padding:    6rem 2.5rem;
+  border-top: 1px solid $border;
+}
+
+// ── Section header (shared style also used in Skills, Projects, Education) ────
+.sec-header {
+  display:         flex;
+  align-items:     baseline;
+  justify-content: space-between;
+  margin-bottom:   4rem;
+  flex-wrap:       wrap;
+  gap:             1rem;
+}
+
+.sec-label {
+  font-size:      0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color:          $lime;
+}
+
+.sec-h {
+  font-family:     $font-heading;
+  font-size:       clamp(2rem, 4.5vw, 3.5rem);
+  font-weight:     800;
+  letter-spacing: -0.03em;
+  color:           $fg;
+}
+
+// ── Timeline ──────────────────────────────────────────────────────────────────
+.exp-timeline {
+  position:    relative;
+  padding-left: 0;
+}
+
+// ── Single job card ───────────────────────────────────────────────────────────
+.exp-item {
+  position:              relative;
+  display:               grid;
+  grid-template-columns: 220px 1fr;
+  gap:                   0;
+  margin-bottom:         2px;
+
+  &:last-child { margin-bottom: 0; }
+
+  // Hover: brighten body panel
+  &:hover .ei-meta { background: $bg3; }
+  &:hover .ei-body { background: #1a1a18; }
+  &:hover .ei-body::before { transform: scaleY(1); }
+  &:hover .ei-role  { color: $lime; }
+  &:hover .etag {
+    border-color: rgba(200, 245, 59, 0.25);
+    color:        $lime;
+    background:   rgba(200, 245, 59, 0.05);
+  }
+  &:hover .ei-bullets li::before { background: $lime; }
+}
+
+// ── Left meta panel ───────────────────────────────────────────────────────────
+.ei-meta {
+  background:     $bg2;
+  border:         1px solid $border;
+  border-right:   none;
+  padding:        2.5rem 2rem;
+  display:        flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition:     background 0.3s;
+}
+
+.ei-num {
+  font-size:      0.62rem;
+  letter-spacing: 0.18em;
+  color:          $lime;
+  font-weight:    700;
+  margin-bottom:  1.5rem;
+  display:        block;
+}
+
+.ei-co {
+  font-family:    $font-heading;
+  font-size:      1rem;
+  font-weight:    800;
+  color:          $fg;
+  line-height:    1.2;
+  margin-bottom:  0.4rem;
+}
+
+.ei-date {
+  display:         inline-flex;
+  align-items:     center;
+  gap:             0.4rem;
+  font-size:       0.68rem;
+  letter-spacing:  0.08em;
+  color:           $fg3;
+  text-transform:  uppercase;
+  margin-top:      1.2rem;
+
+  // Lime dash before date
+  &::before {
+    content:    '';
+    width:      16px;
+    height:     1px;
+    background: $lime;
+    display:    inline-block;
+  }
+}
+
+.ei-loc {
+  font-size:  0.68rem;
+  color:      $fg3;
+  margin-top: 0.3rem;
+}
+
+.ei-status {
+  margin-top:  auto;
+  padding-top: 1.5rem;
+}
+
+.ei-badge {
+  display:        inline-flex;
+  align-items:    center;
+  gap:            0.4rem;
+  font-size:      0.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding:        0.3rem 0.7rem;
+  border:         1px solid $border2;
+  color:          $fg3;
+  border-radius:  100px;
+
+  // Pulsing "Currently here" variant
+  &.current {
+    border-color: rgba(200, 245, 59, 0.3);
+    color:        $lime;
+
+    &::before {
+      content:       '';
+      width:         5px;
+      height:        5px;
+      border-radius: 50%;
+      background:    $lime;
+      animation:     kpulse 1.8s ease-in-out infinite;
+    }
+  }
+}
+
+// ── Right body panel ──────────────────────────────────────────────────────────
+.ei-body {
+  background: $bg3;
+  border:     1px solid $border;
+  padding:    2.5rem;
+  transition: background 0.3s;
+  position:   relative;
+  overflow:   hidden;
+
+  // Lime accent bar slides in on hover
+  &::before {
+    content:          '';
+    position:         absolute;
+    top:              0;
+    left:             0;
+    width:            3px;
+    height:           100%;
+    background:       $lime;
+    transform:        scaleY(0);
+    transform-origin: top;
+    transition:       transform 0.5s $ease-out;
+  }
+}
+
+.ei-role {
+  font-family:     $font-heading;
+  font-size:       1.6rem;
+  font-weight:     800;
+  letter-spacing: -0.025em;
+  color:           $fg;
+  margin-bottom:   1.25rem;
+  line-height:     1.1;
+  transition:      color 0.3s;
+}
+
+// ── Tech tags ─────────────────────────────────────────────────────────────────
+.ei-tags {
+  display:       flex;
+  gap:           0.4rem;
+  flex-wrap:     wrap;
+  margin-bottom: 1.5rem;
+}
+
+.etag {
+  font-size:      0.6rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding:        0.25rem 0.6rem;
+  background:     rgba(237, 233, 227, 0.05);
+  border:         1px solid $border;
+  color:          $fg3;
+  border-radius:  3px;
+  transition:     border-color 0.2s, color 0.2s, background 0.2s;
+}
+
+.ei-divider {
+  width:         100%;
+  height:        1px;
+  background:    $border;
+  margin-bottom: 1.5rem;
+}
+
+// ── Bullet list ───────────────────────────────────────────────────────────────
+.ei-bullets {
+  list-style: none;
+  display:    flex;
+  flex-direction: column;
+  gap:        0.7rem;
+
+  li {
+    font-size:    0.83rem;
+    color:        $fg2;
+    line-height:  1.8;
+    padding-left: 1.5rem;
+    position:     relative;
+    font-weight:  300;
+
+    // Custom bullet dot
+    &::before {
+      content:       '';
+      position:      absolute;
+      left:          0;
+      top:           0.65rem;
+      width:         6px;
+      height:        6px;
+      border-radius: 50%;
+      border:        1px solid $lime;
+      background:    transparent;
+      transition:    background 0.2s;
+    }
+  }
+}
+
+// ── Responsive ───────────────────────────────────────────────────────────────
+@media (max-width: $bp-large) {
+  .exp-item { grid-template-columns: 190px 1fr; }
+}
+
+@media (max-width: $bp-tablet) {
+  .experience { padding: 4rem 1.25rem; }
+
+  .sec-header { margin-bottom: 2.5rem; }
+
+  // Stack meta above body on tablet
+  .exp-item {
+    grid-template-columns: 1fr;
+
+    &:hover .ei-body::before { transform: scaleY(1); }
+  }
+
+  .ei-meta {
+    border-right:   1px solid $border;
+    border-bottom:  none;
+    padding:        1.75rem 1.5rem;
+    flex-direction: row;
+    align-items:    center;
+    justify-content: space-between;
+    flex-wrap:      wrap;
+    gap:            0.75rem;
+  }
+
+  .ei-meta-top { display: flex; flex-direction: column; }
+  .ei-status   { padding-top: 0; }
+  .ei-body     { padding: 2rem 1.5rem; }
+}
+
+@media (max-width: $bp-mobile) {
+  .experience { padding: 3rem 1rem; }
+
+  .sec-header {
+    flex-direction: column;
+    gap:            0.5rem;
+    margin-bottom:  2.5rem;
+  }
+
+  .ei-meta {
+    padding:        1.5rem 1rem;
+    flex-direction: column;
+    align-items:    flex-start;
+  }
+
+  .ei-body { padding: 1.5rem 1rem; }
+  .ei-role { font-size: 1.25rem; }
+}
+
+@media (max-width: $bp-small) {
+  .experience { padding: 2.5rem 0.85rem; }
+}

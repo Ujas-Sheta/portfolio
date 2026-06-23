@@ -1,0 +1,53 @@
+// _animations.scss
+// ─────────────────────────────────────────────────────────────────────────────
+// Global keyframe animations + scroll-reveal utility classes.
+// ─────────────────────────────────────────────────────────────────────────────
+
+@use 'variables' as *;
+
+// ── Keyframes ────────────────────────────────────────────────────────────────
+
+// Pulsing dot (used in hero kicker + "Currently here" badge)
+@keyframes kpulse {
+  0%, 100% { opacity: 1; transform: scale(1);   }
+  50%       { opacity: .3; transform: scale(1.7); }
+}
+
+// Infinite horizontal scroll (marquee track)
+@keyframes marquee-scroll {
+  to { transform: translateX(-50%); }
+}
+
+// ── Scroll-reveal: fade + slide up ───────────────────────────────────────────
+// Add class "rv" to any element; the IntersectionObserver in useScrollReveal.js
+// adds "in" when it enters the viewport.
+//
+// Delay helpers: rv d1 / d2 / d3 / d4
+.rv {
+  opacity:   0;
+  transform: translateY(32px);
+  transition:
+    opacity   0.9s $ease-out,
+    transform 0.9s $ease-out;
+
+  &.in {
+    opacity:   1;
+    transform: none;
+  }
+
+  // Staggered delay variants — use class like: <div className="rv d2">
+  &.d1 { transition-delay: 0.1s; }
+  &.d2 { transition-delay: 0.2s; }
+  &.d3 { transition-delay: 0.3s; }
+  &.d4 { transition-delay: 0.4s; }
+}
+
+// ── Scroll-reveal: clip wipe (left → right) ──────────────────────────────────
+.cr {
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 0.9s $ease-out;
+
+  &.in {
+    clip-path: inset(0 0% 0 0);
+  }
+}
